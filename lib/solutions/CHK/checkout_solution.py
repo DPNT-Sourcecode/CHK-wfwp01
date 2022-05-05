@@ -3,6 +3,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 from curses.ascii import isalpha
+from collections import Counter
 
 
 def skus_are_valid(skus):
@@ -21,6 +22,11 @@ price_table = {
     "D": 15,
 }
 
+def special_offer_processor(sku_list, price_table):
+    sku_list_counts = Counter(sku_list)
+    
+
+
 
 def checkout_processor(sku_list, price_table):
     total = 0
@@ -35,3 +41,4 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
