@@ -13,6 +13,11 @@ class TestCheckout:
         assert response_1 == -1
         assert response_2 == -1
 
+    def test_checkout_without_special_offers_lower_case_skus(self):
+        skus = "a, b, c, d"
+        total = checkout(skus)
+        assert total == 115
+
     def test_checkout_without_special_offers(self):
         skus = "A, B, C, D"
         total = checkout(skus)
@@ -27,4 +32,5 @@ class TestCheckout:
         skus = "A, A, A, A, A, A, B, C, D"
         total = checkout(skus)
         assert total == 325
+
 
