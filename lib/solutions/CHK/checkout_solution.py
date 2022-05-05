@@ -55,13 +55,16 @@ def skus_are_valid(skus):
     return True
 
 
-def special_offer_processor(sku_list):
+def special_offer_processor(sku_list, price_and_offer_table):
     sku_list_counts = Counter(sku_list)
-    special_offer_skus = ["A", "B"]
+    special_offer_skus = ["A", "B", "E"]
     special_offer_discount = 0
     for sku in special_offer_skus:
         if sku == "A":
-            special_offer_discount += sku_list_counts[sku] // 3 * 20
+            # special_offer_discount += sku_list_counts[sku] // 3 * 20
+            _ = price_and_offer_table[sku_list_counts[sku]]["item_count_offer"][sku_list_counts[sku]]
+            special_offer_discount += sku_list_counts[sku] // _ * offer_multiple
+
         if sku == "B":
             special_offer_discount += sku_list_counts[sku] // 2 * 15
     return special_offer_discount
@@ -85,3 +88,4 @@ def checkout(skus):
         return checkout_processor(sku_list, price_and_offer_table)
     else:
         return -1
+
