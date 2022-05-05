@@ -23,9 +23,9 @@ class TestCheckout:
         assert response_5 == -1
 
     def test_checkout_without_special_offers_sku_not_in_price_table(self):
-        skus = "ABCX"
+        skus = "ABCDABCD"
         total = checkout(skus)
-        assert total == 100
+        assert total == 215
 
     def test_checkout_without_special_offers(self):
         skus = "A, B, C, D"
@@ -46,7 +46,3 @@ class TestCheckout:
         skus = "A, A, A, A, A, A, B, C, D"
         total = checkout(skus)
         assert total == 325
-
-
-
-
