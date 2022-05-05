@@ -24,7 +24,13 @@ price_table = {
 
 def special_offer_processor(sku_list, price_table):
     sku_list_counts = Counter(sku_list)
-    
+    special_offer_skus = ["A", "B"]
+    special_offer_discount = 0
+    for sku in special_offer_skus:
+        if sku == A:
+            special_offer_discount += sku_list_counts[sku] // 3 * 20
+        if sku == B:
+            special_offer_discount += sku_list_counts[sku] // 3 * 20
 
 
 
@@ -41,4 +47,5 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
 
