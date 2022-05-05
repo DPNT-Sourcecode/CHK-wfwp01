@@ -12,10 +12,13 @@ def skus_validation(skus):
     sku_list = skus.split(",")
     if not all([isalpha(sku.strip()) for sku in sku_list]):
         return False
+    return True
 
 
 def checkout(skus):
     if skus_validation(skus):
         pass
-    return -1
+    else:
+        return -1
+
 
