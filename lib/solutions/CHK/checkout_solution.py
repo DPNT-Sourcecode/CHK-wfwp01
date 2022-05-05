@@ -43,9 +43,18 @@ def checkout_processor(sku_list, price_table):
     return total
 
 
+def sku_list_builder(skus):
+    sku_list = []
+    for char in skus:
+        if isalpha(char):
+            sku_list.append(char.upper())
+    return sku_list
+
+
 def checkout(skus):
     if skus_are_valid(skus):
-        sku_list = [sku.strip() for sku in skus.split(",")]
+        sku_list = sku_list_builder(skus)
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
