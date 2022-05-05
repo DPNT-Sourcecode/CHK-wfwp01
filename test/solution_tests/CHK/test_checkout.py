@@ -43,6 +43,7 @@ class TestCheckout:
         assert total == 195
 
     def test_checkout_with_multiple_special_offers(self):
-        skus = "A, A, A, A, A, A, B, C, D"
+        skus = "A, A, A, A, A, B, C, D"
         total = checkout(skus)
-        assert total == 325
+        assert total == 365
+
