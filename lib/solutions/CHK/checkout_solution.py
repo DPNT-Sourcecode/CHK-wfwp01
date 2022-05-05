@@ -20,16 +20,20 @@ price_table = {
     "D": 15,
 }
 
-def checkout_processor(sku_list, price_table:
-    for upper(sku) in sku_list:
 
+def checkout_processor(sku_list, price_table):
+    total = 0
+    for sku in sku_list:
+        total += price_table[sku.upper()]
+    return total
 
 
 def checkout(skus):
     if skus_validation(skus):
-        pass
+        return checkout_processor(skus, price_table)
     else:
         return -1
+
 
 
 
