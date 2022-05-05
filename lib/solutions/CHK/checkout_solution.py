@@ -48,7 +48,8 @@ def special_offer_processor(sku_list):
 def checkout_processor(sku_list, price_table):
     total = 0
     for sku in sku_list:
-        total += price_table[sku.upper()]
+        if sku in price_table:
+            total += price_table[sku.upper()]
     total -= special_offer_processor(sku_list)
     return total
 
@@ -59,4 +60,5 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
 

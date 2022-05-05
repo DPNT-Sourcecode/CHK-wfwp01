@@ -4,15 +4,15 @@ from solutions.CHK.checkout_solution import checkout
 class TestCheckout:
 
     def test_checkout_illegal_input(self):
-        illegal_string_input = "1, 2, 3"
-        illegal_non_string_input = ["A, B, C"]
+        invalid_string_input = "1, 2, 3"
+        invalid_non_string_input = ["A, B, C"]
         empty_string_input = ""
-        invalid_string_input = "-"
+        invalid_string_input_non_alpha = "-"
 
-        response_1 = checkout(illegal_string_input)
-        response_2 = checkout(illegal_non_string_input)
+        response_1 = checkout(invalid_string_input)
+        response_2 = checkout(invalid_non_string_input)
         response_3 = checkout(empty_string_input)
-        response_4 = checkout(invalid_string_input)
+        response_4 = checkout(invalid_string_input_non_alpha)
 
         assert response_1 == -1
         assert response_2 == -1
@@ -29,6 +29,11 @@ class TestCheckout:
         total = checkout(skus)
         assert total == 115
 
+    def test_checkout_without_special_offers_sku_not_in_price_table(self):
+        skus = "abcx"
+        total = checkout(skus)
+        assert total == 100
+
     def test_checkout_without_special_offers(self):
         skus = "A, B, C, D"
         total = checkout(skus)
@@ -43,3 +48,4 @@ class TestCheckout:
         skus = "A, A, A, A, A, A, B, C, D"
         total = checkout(skus)
         assert total == 325
+
