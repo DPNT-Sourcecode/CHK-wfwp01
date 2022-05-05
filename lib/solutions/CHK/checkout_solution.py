@@ -25,7 +25,8 @@ def skus_are_valid(skus):
     if len(skus) == 0:
         return False
     if isinstance(skus, str) and len(skus) == 1:
-        sku_list_builder(skus)
+        if not all([isalpha(sku) for sku in skus]):
+            return False
     else:
         if not all([isalpha(sku.strip()) for sku in skus.split(",")]):
             return False
@@ -58,6 +59,7 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
 
 
 
