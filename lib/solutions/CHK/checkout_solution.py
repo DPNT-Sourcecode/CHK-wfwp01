@@ -11,7 +11,7 @@ def skus_validation(skus):
     sku_list = [sku.strip() for sku in skus.split(",")]
     if not all([isalpha(sku) for sku in sku_list]):
         return False
-    return [True, sku_list]
+    return True
 
 
 price_table = {
@@ -30,11 +30,13 @@ def checkout_processor(sku_list, price_table):
 
 
 def checkout(skus):
-    skus_valid, sku_list = skus_validation(skus)
+    skus_valid = skus_validation(skus)
     if skus_valid:
+        sku_list = [sku.strip() for sku in skus.split(",")]
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
 
 
 
