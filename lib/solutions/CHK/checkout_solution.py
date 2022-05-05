@@ -8,10 +8,11 @@ from curses.ascii import isalpha
 def skus_validation(skus):
     if not isinstance(skus, str):
         return False
-    sku_list = skus.split(",")
-    if not all([isalpha(sku.strip()) for sku in sku_list]):
+    sku_list = [sku.strip() for sku in skus.split(",")]
+    if not all([isalpha(sku) for sku in sku_list]):
         return False
-    return True
+    return [True, sku_list]
+
 
 price_table = {
     "A": 50,
@@ -29,10 +30,12 @@ def checkout_processor(sku_list, price_table):
 
 
 def checkout(skus):
-    if skus_validation(skus):
-        return checkout_processor(skus, price_table)
+    skus_valid, sku_list = skus_validation(skus)
+    if skus_valid:
+        return checkout_processor(sku_list, price_table)
     else:
         return -1
+
 
 
 
