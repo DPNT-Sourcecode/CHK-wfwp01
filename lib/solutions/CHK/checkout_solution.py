@@ -49,7 +49,3 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
-
-
-
-
