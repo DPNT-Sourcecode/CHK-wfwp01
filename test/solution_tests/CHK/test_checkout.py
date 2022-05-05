@@ -13,8 +13,12 @@ class TestCheckout:
         assert response_1 == -1
         assert response_2 == -1
 
-    def test_checkout(self):
+    def test_checkout_without_special_offers(self):
         skus = "A, B, C, D"
         total = checkout(skus)
         assert total == 115
 
+    def test_checkout_with_special_offers(self):
+        skus = "A, A, A, B, C, D"
+        total = checkout(skus)
+        assert total == 195
