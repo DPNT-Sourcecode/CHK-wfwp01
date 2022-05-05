@@ -7,6 +7,7 @@ class TestCheckout:
         illegal_string_input = "1, 2, 3"
         illegal_non_string_input = ["A, B, C"]
         empty_string_input = ""
+        invalid_string_input = "-"
 
         response_1 = checkout(illegal_string_input)
         response_2 = checkout(illegal_non_string_input)
@@ -35,6 +36,7 @@ class TestCheckout:
         skus = "A, A, A, A, A, A, B, C, D"
         total = checkout(skus)
         assert total == 325
+
 
 
 
