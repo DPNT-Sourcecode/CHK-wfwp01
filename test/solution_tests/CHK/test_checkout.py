@@ -8,16 +8,19 @@ class TestCheckout:
         invalid_non_string_input = ["A, B, C"]
         invalid_string_input_non_alpha = "-"
         invalid_string_lowercase = "abcd"
+        invalid_string_list_mixed_cases = ["A, b, C"]
 
         response_1 = checkout(invalid_string_input)
         response_2 = checkout(invalid_non_string_input)
         response_3 = checkout(invalid_string_input_non_alpha)
         response_4 = checkout(invalid_string_lowercase)
+        response_5 = checkout(invalid_string_list_mixed_cases)
 
         assert response_1 == -1
         assert response_2 == -1
         assert response_3 == -1
         assert response_4 == -1
+        assert response_5 == -1
 
     def test_checkout_without_special_offers_sku_not_in_price_table(self):
         skus = "ABCX"
@@ -43,6 +46,7 @@ class TestCheckout:
         skus = "A, A, A, A, A, A, B, C, D"
         total = checkout(skus)
         assert total == 325
+
 
 
 
