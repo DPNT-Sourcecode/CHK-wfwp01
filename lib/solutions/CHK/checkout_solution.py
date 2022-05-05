@@ -6,7 +6,6 @@ from curses.ascii import isalpha
 
 
 def skus_validation(skus):
-    """skus validation function to ensure correct input"""
     if not isinstance(skus, str):
         return False
     sku_list = skus.split(",")
@@ -14,11 +13,23 @@ def skus_validation(skus):
         return False
     return True
 
+price_table = {
+    "A": 50,
+    "B": 30,
+    "C": 20,
+    "D": 15,
+}
+
+def checkout_processor(sku_list, price_table:
+    for upper(sku) in sku_list:
+
+
 
 def checkout(skus):
     if skus_validation(skus):
         pass
     else:
         return -1
+
 
 
