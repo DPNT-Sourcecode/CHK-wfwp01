@@ -17,4 +17,3 @@ def skus_validation(skus):
 def checkout(skus):
     if skus_validation(skus):
         return -1
-
