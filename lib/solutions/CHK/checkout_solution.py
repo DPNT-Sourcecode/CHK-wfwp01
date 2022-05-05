@@ -1,5 +1,3 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 from curses.ascii import isalpha
@@ -8,6 +6,8 @@ from collections import Counter
 
 def skus_are_valid(skus):
     if not isinstance(skus, str):
+        return False
+    if len(skus) == 0:
         return False
     sku_list = [sku.strip() for sku in skus.split(",")]
     if not all([isalpha(sku) for sku in sku_list]):
@@ -49,6 +49,7 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+
 
 
 
