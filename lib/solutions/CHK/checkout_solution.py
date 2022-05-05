@@ -5,13 +5,16 @@
 from curses.ascii import isalpha
 
 
-def checkout(skus):
+def skus_validation(skus):
+    """skus validation function to ensure correct input"""
     if not isinstance(skus, str):
-        return -1
-    else:
-        pass
+        return True
     sku_list = skus.split(",")
-    if all([isalpha(sku.strip()) for sku in sku_list]):
-        pass
-    else:
+    if not all([isalpha(sku.strip()) for sku in sku_list]):
+        return True
+
+
+def checkout(skus):
+    if skus_validation(skus):
         return -1
+
