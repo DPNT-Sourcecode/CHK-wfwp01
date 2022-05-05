@@ -3,12 +3,31 @@
 from curses.ascii import isalpha
 from collections import Counter
 
-price_table = {
-    "A": 50,
-    "B": 30,
+price_and_offer_table = {
+    "A": {
+        "price": 50,
+        "item_count": [5, 3],
+        "item_count_offer": {
+            3: 130,
+            5: 200,
+        }
+    },
+    "B": {
+        "price": 30,
+        "item_count": [2],
+        "item_count_offer": {
+            2: 45,
+        }
+    },
     "C": 20,
     "D": 15,
-    "E": 40,
+    "E": {
+        "price": 40,
+        "item_count": [2],
+        "item_count_offer": {
+            2: "B",
+        }
+    }
 }
 
 
@@ -63,7 +82,6 @@ def checkout_processor(sku_list, price_table):
 def checkout(skus):
     if skus_are_valid(skus):
         sku_list = sku_list_builder(skus)
-        return checkout_processor(sku_list, price_table)
+        return checkout_processor(sku_list, price_and_offer_table)
     else:
         return -1
-
