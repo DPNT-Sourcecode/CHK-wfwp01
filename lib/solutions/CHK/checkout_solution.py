@@ -8,6 +8,7 @@ price_table = {
     "B": 30,
     "C": 20,
     "D": 15,
+    "E": 40,
 }
 
 
@@ -65,3 +66,4 @@ def checkout(skus):
         return checkout_processor(sku_list, price_table)
     else:
         return -1
+

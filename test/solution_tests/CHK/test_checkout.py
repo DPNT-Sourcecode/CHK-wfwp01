@@ -22,15 +22,15 @@ class TestCheckout:
         assert response_4 == -1
         assert response_5 == -1
 
-    def test_checkout_without_special_offers_sku_not_in_price_table(self):
+    def test_checkout_repeat_basket(self):
         skus = "ABCDABCD"
         total = checkout(skus)
         assert total == 215
 
     def test_checkout_without_special_offers(self):
-        skus = "A, B, C, D"
+        skus = "A, B, C, D, E"
         total = checkout(skus)
-        assert total == 115
+        assert total == 155
 
     def test_checkout_with_empty_skus(self):
         skus = ""
@@ -46,4 +46,5 @@ class TestCheckout:
         skus = "A, A, A, A, A, B, C, D"
         total = checkout(skus)
         assert total == 365
+
 
