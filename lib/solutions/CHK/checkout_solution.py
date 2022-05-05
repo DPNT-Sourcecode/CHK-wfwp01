@@ -8,12 +8,14 @@ from curses.ascii import isalpha
 def skus_validation(skus):
     """skus validation function to ensure correct input"""
     if not isinstance(skus, str):
-        return True
+        return False
     sku_list = skus.split(",")
     if not all([isalpha(sku.strip()) for sku in sku_list]):
-        return True
+        return False
 
 
 def checkout(skus):
     if skus_validation(skus):
-        return -1
+        pass
+    return -1
+
