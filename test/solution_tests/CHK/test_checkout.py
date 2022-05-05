@@ -12,5 +12,3 @@ class TestCheckout:
 
         assert response_1 == -1
         assert response_2 == -1
-
-
